@@ -26,20 +26,7 @@ def criar_personagem(nome):
                 f.write('2\n')
                 f.write('0\n')
         return Personagem(nome,1,10,5,2,0)
-
-def rolar_dados():
-        nonlocal pocoes
-        table = [0]*12 #Daqui
-        for i in range(0,12):
-            table[i] = random.randint(0,1)
-        table[random.randint(1,12)] = 2 #Até aqui: definir uma função pra organizar o tabuleiro
-        print(table)
-        resultado = random.randint(1,12)
-        if table[resultado] == 1:
-            batalhar()
-        elif table[resultado] == 2:
-            pocoes += 1
-        
+      
 def batalhar():
     pass
 def usar_item():
@@ -61,10 +48,25 @@ def carregar():
                 main(personagem)
                 
 def main(personagem):
+        def rolar_dados():
+                nonlocal pocoes
+                table = [0]*12 #Daqui
+                for i in range(0,12):
+                    table[i] = random.randint(0,1)
+                table[random.randint(0,11)] = 2 #Até aqui: definir uma função pra organizar o tabuleiro
+                print(table)
+                resultado = random.randint(0,11)
+                print(resultado)
+                if table[resultado] == 1:
+                    batalhar()
+                elif table[resultado] == 2:
+                    pocoes += 1
+                    
         pers = personagem
         print('{}\n{}\n{}\n{}\n{}\n'.format(pers.nome, pers.lvl, pers.pv, pers.atk, pers.pd))
         pocoes = 0
         while True:
+                print(pocoes)
                 print('\n(1)ROLAR DADOS\n(2)USAR ITEM\n(3)DESCANSAR\n(4)SALVAR\n(5)SAIR\n')
                 ans2 = input('O que deseja fazer? ')
                 match ans2:
