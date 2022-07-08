@@ -94,7 +94,7 @@ def usar_item(personagem):
             print('\nVocê não tem mais poções')
             
 def descansar(personagem):
-        pass
+        personagem.ganhar_vida(2)
 def salvar(personagem):
         pass
 def novo_jogo(): #Precisa melhorar para limitar o número de saves
