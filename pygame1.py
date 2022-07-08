@@ -121,7 +121,7 @@ def carregar():
                 
 def main(personagem):        
         pers = personagem
-        print('{}\n{}\n{}\n{}\n{}\n{}\n{}\n'.format(pers.nome, pers.lvl, pers.pv, pers.atk, pers.pd, pers.pexp, pers.pocoes))
+        print('NOME: {}\nNÍVEL: {}\nPV: {}\nP.ATK: {}\nP.DF: {}\nEXP: {}\nPOCOES: {}\n'.format(pers.nome, pers.lvl, pers.pv, pers.atk, pers.pd, pers.pexp, pers.pocoes))
         while True:
                 if pers.pv <= 0:
                     print('FIM DE JOGO')
