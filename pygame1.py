@@ -63,6 +63,7 @@ def rolar_dados(personagem):
                 elif table[resultado] == 2:
                     personagem.pocoes += 1
                     print('\nVocê encontrou uma poção')
+			
 def batalhar(personagem, enemy):
     print('\nVocê encontrou um inimigo de nível {} com {}PV. O que vai fazer? '.format(enemy.lvl, enemy.pv))
     while True:
@@ -95,19 +96,28 @@ def usar_item(personagem):
             
 def descansar(personagem):
         personagem.ganhar_vida(2)
+	
 def salvar(personagem):
-        pass
+        with open('save.txt', 'w', encoding = 'utf-8') as f:
+		f.write(personagem.nome + '\n')
+		f.write(str(personagem.lvl) + '\n')
+		f.write(str(personagem.pv) + '\n')
+		f.write(str(personagem.atk) + '\n')
+		f.write(str(personagem.pd) + '\n')
+		f.write(str(personagem.pexp) + '\n')
+		f.write(str(personagem.pocoes) + '\n')
+	print('\nPERSONAGEM SALVO (y)')
+
 def novo_jogo(): #Precisa melhorar para limitar o número de saves
                 personagem = criar_personagem(input('NOME DO PERSONAGEM: '))
                 main(personagem)
 
 def carregar():
-        with open('save.txt') as f:
+        with open('save.txt', encoding = 'utf-8') as f:
                 aux = []
                 for i in f:
                     aux.append(i[:len(i)-1])
-                personagem = Personagem(*aux)
-                main(personagem)
+                main(Personagem(*aux))
                 
 def main(personagem):        
         pers = personagem
